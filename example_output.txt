@@ -1,0 +1,45 @@
+
+> node-socket-reuse-race@1.0.0 start
+> DEBUG=client ./index.js
+
+Server is listening on port 12345
+2025-09-24T21:48:31.836Z client Request 1 socket [latest request]
+2025-09-24T21:48:31.838Z client Request 1 prefinish [latest request]
+2025-09-24T21:48:31.842Z client Request 1 finish [latest request]
+2025-09-24T21:48:31.845Z client Request 1 continue [latest request]
+2025-09-24T21:48:31.845Z client Request 1 information [latest request]
+2025-09-24T21:48:31.845Z client Response for request 1 200
+2025-09-24T21:48:31.845Z client Request 1 response [latest request]
+2025-09-24T21:48:31.845Z client Response for request 1 resume
+2025-09-24T21:48:31.845Z client Response for request 1 readable
+2025-09-24T21:48:31.846Z client Response for request 1 end
+2025-09-24T21:48:31.846Z client Request 1 close [latest request]
+2025-09-24T21:48:31.846Z client Response for request 1 close
+2025-09-24T21:48:31.846Z client Request succeeded
+2025-09-24T21:48:31.846Z client Request 2 socket [latest request]
+2025-09-24T21:48:31.847Z client Request 2 prefinish [latest request]
+2025-09-24T21:48:31.847Z client Request 2 continue [latest request]
+2025-09-24T21:48:31.847Z client Request 2 information [latest request]
+2025-09-24T21:48:31.847Z client Response for request 2 200
+2025-09-24T21:48:31.847Z client Request 2 response [latest request]
+2025-09-24T21:48:31.847Z client Response for request 2 resume
+2025-09-24T21:48:31.847Z client Response for request 2 readable
+2025-09-24T21:48:31.847Z client Response for request 2 end
+2025-09-24T21:48:31.848Z client Request 2 close [latest request]
+2025-09-24T21:48:31.848Z client Response for request 2 close
+2025-09-24T21:48:31.848Z client Request succeeded
+2025-09-24T21:48:31.848Z client Request 3 socket [latest request]
+2025-09-24T21:48:31.848Z client Request 2 finish [socket same as the latest request]
+2025-09-24T21:48:31.848Z client Request 2 close [socket same as the latest request]
+file:///path/to/node-socket-reuse-race/node_modules/p-timeout/index.js:51
+		const timeoutError = new TimeoutError();
+		                     ^
+
+TimeoutError: Promise timed out after 5000 milliseconds
+    at file:///path/to/node-socket-reuse-race/node_modules/p-timeout/index.js:51:24
+    at new Promise (<anonymous>)
+    at pTimeout (file:///path/to/node-socket-reuse-race/node_modules/p-timeout/index.js:24:25)
+    at file:///path/to/node-socket-reuse-race/index.js:32:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+Node.js v22.20.0

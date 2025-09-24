@@ -1,0 +1,32 @@
+{
+  "name": "node-socket-reuse-race",
+  "version": "1.0.0",
+  "description": "Minimal-ish reproduce for a race condition in the Node.js `https` module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinslota/node-socket-reuse-race.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martinslota/node-socket-reuse-race/issues"
+  },
+  "homepage": "https://github.com/martinslota/node-socket-reuse-race#readme",
+  "keywords": [
+    "node",
+    "https",
+    "expect-100-continue",
+    "empty payload",
+    "race condition"
+  ],
+  "author": "Martin Slota",
+  "license": "ISC",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=client ./index.js",
+    "start-verbose": "NODE_DEBUG=http DEBUG=client ./index.js"
+  },
+  "dependencies": {
+    "debug": "^4.4.3",
+    "p-timeout": "^7.0.0"
+  }
+}
