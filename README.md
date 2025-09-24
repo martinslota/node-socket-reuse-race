@@ -24,7 +24,7 @@ it, one request at a time, with requests that satisfy the above conditions.
 ## Steps to reproduce the race condition
 
 1. Clone this repository
-1. Switch to Node.js version 22.10.0 using `fnm use`
+1. Switch to Node.js version 22.20.0 using `fnm use`
 1. Install dependencies using `npm ci`
 1. Run `npm start`
 
