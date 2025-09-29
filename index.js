@@ -2,6 +2,8 @@
 
 import { readFileSync } from "node:fs";
 import https from "node:https";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import debug from "debug";
 import pTimeout from "p-timeout";
@@ -9,7 +11,9 @@ import pTimeout from "p-timeout";
 const log = debug("client");
 
 const options = {
-  pfx: readFileSync("test_cert.pfx"),
+  pfx: readFileSync(
+    path.join(path.dirname(fileURLToPath(import.meta.url)), "test_cert.pfx")
+  ),
   passphrase: "sample",
 };
 
@@ -28,7 +32,7 @@ await new Promise((resolve) =>
 let latestRequestId = 0;
 let latestReq = null;
 
-while (true) {
+for (let i = 0; i < 1000; i++) {
   await pTimeout(
     new Promise((resolve, reject) => {
       const req = https.request(
@@ -108,3 +112,5 @@ while (true) {
   );
   log("Request succeeded");
 }
+
+server.close();
